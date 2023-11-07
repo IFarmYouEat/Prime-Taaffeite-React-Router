@@ -1,4 +1,6 @@
 import React from 'react';
+import {useHistory} from 'react-router-dom';
+//! useHistory will not work in App.jsx, this will only work on a child.
 
 let plants = [
   "https://gardeningsolutions.ifas.ufl.edu/mastergardener/outreach/plant_id/images/flowers/bird_paradise_flower.jpg",
@@ -9,9 +11,19 @@ let plants = [
 ]
 
 function Plants() {
+  // Required for using history in your component!
+  const history = useHistory();
+ 
+  const handleClick = (e) => {
+    history.push('/');
+  }
+
   return (
     <div>
       <h1>PLANTS</h1>
+      <button onClick={handleClick}>Go Home</button>
+      <br />
+      <br />
       {plants.map((plant, i) => 
         <img 
           key={i}
